@@ -25,16 +25,42 @@ document.getElementById("btn-letras").addEventListener("click", function () {
 });
 
 // questão 06
-document.getElementById("my-photo").src = '../encontro_III/acesa.jpg';
+function changeImage() {
+  
+  var imgClickAndChange = document.getElementById("imgClickAndChange");
+  if (imgClickAndChange.src.indexOf("https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true") !== -1) {
+    imgClickAndChange.src = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true"
+  } else {
+    imgClickAndChange.src = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true"
+  }
+}
 
 // questão 07
-
+function hoverImage() {
+  var imgHoverAndChange = document.getElementById("imgHoverAndChange");
+  if (imgHoverAndChange.src.indexOf("https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true") !== -1) {
+    imgHoverAndChange.src = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true"
+  } else {
+    imgHoverAndChange.src = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true"
+  }
+}
+document.getElementById("btn-alert").addEventListener("click", function () {
+  var name = document.getElementById('name').value;
+  var lastname = document.getElementById('last-name').value;
+  alert('Olá ' + name + " " + lastname + '!');
+});
 
 // questão 08
-
+function contarCpf(valor) {
+  var cont = valor.length;
+  document.getElementById("quantidade").value = cont;
+}
 
 // questão 09
-
+function contarCpfPoint(valor) {
+  var cont = valor.replace(/[\.-]/g, "");
+  document.getElementById("quantidade_point").value = cont;
+}
 
 // questão 10
 
