@@ -355,8 +355,13 @@
         <div class="col-xs-1 ba">5.6</div>
       </div>
       <hr>
-      <div class="row b">TAÇA LIBERTADORES PRÉ-LIBERTADORES SUL-AMERICANA REBAIXADOS</div>
-      <div class="row c">P pontos J jogos V vitórias E empates D derrotas GP gols pró GC gols contra SG saldo de gols (%) aproveitamento</div>
+      <div class="row b">
+        &emsp;<div id="square1"></div>&nbsp;TAÇA LIBERTADORES
+        &emsp;<div id="square2"></div>&nbsp;PRÉ-LIBERTADORES
+        &emsp;<div id="square3"></div>&nbsp;SUL-AMERICANA
+        &emsp;<div id="square4"></div>&nbsp;REBAIXADOS
+      </div>
+      <div class="row c">&emsp;P pontos J jogos V vitórias E empates D derrotas GP gols pró GC gols contra SG saldo de gols (%) aproveitamento</div>
     </table>
   </div>
   <br>
@@ -451,12 +456,20 @@
   }
 
   .row.b {
-    font-size: 14px;
+    line-height: 10px;
+    display: flex;
+    font-size: 10px;
+    color: #8F8F8F;
+    text-align: left;
   }
 
   .row.c {
+    line-height: 30px;
+    display: flex;
     font-weight: bold; 
-    font-size: 12px;
+    font-size: 10px;
+    color: #555555;
+    text-align: left;
   }
   .col-xs-1.b13 {
     width: 50px;
@@ -499,6 +512,26 @@
 
   hr.mb {
     border: 2px solid #DDDDDD;
+  }
+
+  #square1 {
+    width: 10px;
+    background-color: #003366;
+  }
+
+  #square2 {
+    width: 10px;
+    background-color: #1398BE;
+  }
+
+  #square3 {
+    width: 10px;
+    background-color: #DE9800;
+  }
+
+  #square4 {
+    width: 10px;
+    background-color: #C91B04;
   }
 
 </style>
