@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tarefa Encontro III - HTML5, CSS3 & JS</title>
+  </head>
+  <body>
+    <div class="unibratec">
+    </div>
+    <div class="content-wrapper">
+      <table>
+        <tr>
+          <td>
+            <form onsubmit="event.preventDefault();salvarTarefa();" autocomplete="off">
+              <div>
+                <label class="validation-error hide" id="tarefaValidationError">Tarefa</label>
+                <input type="text" name="tarefa" id="tarefa">
+              </div>
+              <div  class="form-action-buttons">
+                <input type="submit" value="Salvar">
+              </div>
+            </form>
+          </td>
+          <td>
+            <table class="list" id="employeeList">  
+              <tr>
+                <th>Tarefa</th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <footer style="text-align: center; height: 50px; margin-top: 40px;">
+    Copyright© 2019
+  </footer>
+</html>
+
+<style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: Ubuntu;
+    letter-spacing: 1px;
+  }
+
+  .unibratec {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: rgb(50, 50, 50);
+    background: url(http://unibratec.edu.br/faculdade/wp-content/uploads/2015/07/logo-faculdade-ibratec.png) no-repeat 50% 50% fixed;
+    background-size: 100%;
+    overflow: hidden;
+  }
+
+  .unibratec h1 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: .3em;
+    font-size: 3em;
+    font-weight: lighter;
+  }
+
+  .content-wrapper {
+    width: 80%;
+    height: 200px;
+    padding: 1em 10%;
+    background-color: blue;
+  }
+</style>
+
+<script type="text/javascript">
+  var selectedRow = null
+
+  function salvarTarefa() {
+    if (validate()) {
+        var formData = lerDados();
+        if (selectedRow == null)
+            novaTarefa(formData);
+        else
+            editarRegistro(formData);
+        resetar();
+    }
+  }
+
+  function lerDados() {
+    var formData = {};
+    formData["tarefa"] = document.getElementById("tarefa").value;
+    return formData;
+  }
+
+  function novaTarefa(data) {
+    var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.tarefa;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = `<a onClick="editarTarefa(this)">Edit</a>
+                       <a onClick="deletarRegistro(this)">Delete</a>`;
+  }
+
+  function resetar() {
+    document.getElementById("tarefa").value = "";
+    selectedRow = null;
+  }
+
+  function editarTarefa(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("tarefa").value = selectedRow.cells[0].innerHTML;
+  }
+  function editarRegistro(formData) {
+    selectedRow.cells[0].innerHTML = formData.tarefa;
+  }
+
+  function deletarRegistro(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employeeList").deleteRow(row.rowIndex);
+        resetar();
+    }
+  }
+  function validate() {
+    isValid = true;
+    if (document.getElementById("tarefa").value == "") {
+        isValid = false;
+        
+    } else {
+        isValid = true;
+        if (!document.getElementById("tarefaValidationError").classList.contains("hide"))
+            document.getElementById("tarefaValidationError").classList.add("hide");
+    }
+    return isValid;
+  }
+</script>
